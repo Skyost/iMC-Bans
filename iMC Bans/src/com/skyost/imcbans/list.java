@@ -93,7 +93,7 @@ public class list extends JavaPlugin{
 		}
 
 		if(cmd.getName().equalsIgnoreCase("imcbver")){
-			sender.sendMessage("iMC Bans version 0.1");
+			sender.sendMessage("iMC Bans version 0.2");
 		}
 		return true;
 
