@@ -19,17 +19,17 @@ public class playerListener implements Listener {
 	    
 	    @EventHandler
 	    public void onPlayerJoin(PlayerJoinEvent event) {
-		    	plugin.getLogger().info("[iMC Bans] Recherche de " + event.getPlayer().getName() + " dans notre base de données...");
+		    	plugin.getLogger().info("[iMC Bans] Recherche de " + event.getPlayer().getName() + " dans notre base de donnees...");
 		    	playerlogin = event.getPlayer().getName();
 		    	readFile("list.txt");
 		    	 if(bl.contains(playerlogin)){
-		    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est contenu dans notre base de donnée !!");
+		    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est contenu dans notre base de donnee !!");
 		    		 event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans v0.2 www.imcbans.cu.cc");
 		    		 event.getPlayer().setBanned(true);
 		    		 System.out.println("[iMC Bans] Nous avons bannis " + event.getPlayer().getName() + ".");
 		    	 }
 		    	 else {
-		    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " n'est pas contenu dans notre base de donnée.");
+		    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " n'est pas contenu dans notre base de donnee.");
 		    	 }
 	    }
 	    
