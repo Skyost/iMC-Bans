@@ -88,12 +88,22 @@ public class list extends JavaPlugin{
 			player = (Player) sender;
 		}
 		
+		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1){
+			Player s = (Player)sender;
+		    Player target = sender.getServer().getPlayer(args[0]);
+		    String ip = target.getAddress().getHostName();
+		    String demandeur = s.getName();
+		    String playerip = target.getName();
+			System.out.println("[iMC Bans] " + demandeur + " a obtenu l adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip);
+			sender.sendMessage("L adresse IP de " + playerip + " est " + ip);
+		}
+		
 		if(cmd.getName().equalsIgnoreCase("imcbdl")){
 			onEnable();
 		}
 
 		if(cmd.getName().equalsIgnoreCase("imcbver")){
-			sender.sendMessage("iMC Bans version 0.2");
+			sender.sendMessage("iMC Bans version 0.3");
 		}
 		return true;
 
