@@ -1,0 +1,12 @@
+name: iMC Bans
+version: 0.2
+main: com.skyost.imcbans.list
+author: Skyost
+description: Nothing at this point
+commands:
+    imcbdl:
+        usage: /imcbdl
+        description: Retelecharge la base de donnees
+    imcbver:
+        usage: /imcbver
+        description: Montre la version du plugin
