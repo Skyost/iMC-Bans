@@ -24,9 +24,9 @@ public class list extends JavaPlugin{
 	public void onEnable(){
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(playerListener, this);
-		System.out.println("[iMC Bans] Telechargment du fichier list.txt...)");
+		System.out.println("[iMC Bans] Telechargment du fichier list.txt...");
 		UrlUtils("http://www.imcbans.cu.cc/list.txt");
-		System.out.println("[iMC Bans] Lecture du fichier list.txt...)");
+		System.out.println("[iMC Bans] Lecture du fichier list.txt :");
 		readFile("list.txt");
 		System.out.println("[iMC Bans] Pret a bannir les griefers ;)");
 		System.out.println("[iMC Bans] Visitez http://www.imcbans.cu.cc/ pour plus d'informations.");
