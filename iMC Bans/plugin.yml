@@ -1,12 +1,15 @@
 name: iMC Bans
-version: 0.3
+version: 0.3.1
 main: com.skyost.imcbans.list
 author: Skyost
-description: Nothing at this point
+description: UNE liste DES serveurs
 commands:
     imcbdl:
         usage: /imcbdl
         description: Retelecharge la base de donnees
+    imcbchk:
+        usage: /imcbdl
+        description: Cherche des mises a jours
     imcbip:
         usage: /imcbip joueur
         description: Obtient l adresse IP de <joueur>

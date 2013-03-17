@@ -15,7 +15,7 @@ public class playerListener implements Listener {
 	 String playerlogin = null;
 	 String bl = null;
 	 String banlist = null;
-
+	 
 	    public playerListener(list instance) {
 	        plugin = instance;
 	    }
@@ -27,13 +27,13 @@ public class playerListener implements Listener {
 		    	readList("list.txt");
 		    		if(bl.contains(playerlogin)) {
 		    			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est contenu dans notre base de donnee !!");
-		    			event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans v0.3 www.imcbans.cu.cc");
+		    			event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans www.imcbans.cu.cc");
 		    			readBanList("banned-players.txt");
 		    		 		if(banlist.contains(playerlogin)) {
 		    		 			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est deja bannis !");
 		    		 		}
 		    		 		else {
-		    		 			writeFile("banned-players.txt", event.getPlayer().getName() + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans v0.3 www.imcbans.cu.cc");
+		    		 			writeFile("banned-players.txt", event.getPlayer().getName() + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans www.imcbans.cu.cc");
 				    		 	System.out.println("[iMC Bans] Nous avons bannis " + event.getPlayer().getName() + ".");
 		    		 		}
 		    		}
