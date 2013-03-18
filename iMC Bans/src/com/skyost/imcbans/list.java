@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,15 +20,16 @@ import com.skyost.imcbans.playerListener;
 
 public class list extends JavaPlugin{
 	public String s = null;
+	public String versiontxt = null;
 	private final playerListener playerListener = new playerListener(this);
 
-	public void onEnable(){
+	public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(playerListener, this);
-		System.out.println("[iMC Bans] Telechargment du fichier list.txt...");
+		System.out.println("[iMC Bans] Telechargement du fichier list.txt...");
 		UrlUtils("http://www.imcbans.cu.cc/list.txt");
 		System.out.println("[iMC Bans] Lecture du fichier list.txt :");
-		readFile("list.txt");
+		readList("list.txt");
 		System.out.println("[iMC Bans] Pret a bannir les griefers ;)");
 		System.out.println("[iMC Bans] Visitez http://www.imcbans.cu.cc/ pour plus d'informations.");
 	}
@@ -60,7 +62,7 @@ public class list extends JavaPlugin{
 		WritenFile.close();
 	}
 	
-	public void readFile(String file) {
+	public void readList(String file) {
 		Scanner sc;
 		try {
 			sc = new Scanner(new File(file));
@@ -75,35 +77,84 @@ public class list extends JavaPlugin{
 		}
 	}
 	
+	public void readVersion(String file) {
+		Scanner sc;
+		try {
+			sc = new Scanner(new File(file));
+			while (sc.hasNextLine())
+			{
+			    versiontxt = sc.nextLine();
+			}
+			sc.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteFile(String file) {
+		File filename = new File(file);
+		filename.delete();
+	}
+	
 	public void onDisable(){
 		System.out.println("[iMC Bans] A plus tard !");
 	}
 	
+	public void checkUpdate() {
+		System.out.println("[iMC Bans Update] Recherche de mises a jour...");
+		UrlUtils("http://www.imcbans.cu.cc/version.txt");
+		readVersion("version.txt");
+		if(versiontxt.equals("iMC Bans 0.3.1")) {
+			System.out.println("[iMC Bans Update] Votre installation est parfaitement a jour ;)");
+			deleteFile("version.txt");
+		}
+		else {
+			System.out.println("[iMC Bans Update] Vous possedez la version 0.3.1 tandis que la version la plus recente est " + versiontxt + " :s");
+			System.out.println("[iMC Bans Update] Consultez http://www.imcbans.cu.cc pour plus d informations ;)");
+			deleteFile("version.txt");
+		}
+	}
+	
 	@SuppressWarnings("unused")
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player player = null;
 		
 		if (sender instanceof Player) {
 			player = (Player) sender;
 		}
 		
-		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1){
-			Player s = (Player)sender;
-		    Player target = sender.getServer().getPlayer(args[0]);
-		    String ip = target.getAddress().getHostName();
-		    String demandeur = s.getName();
-		    String playerip = target.getName();
-			System.out.println("[iMC Bans] " + demandeur + " a obtenu l adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip);
-			sender.sendMessage("L adresse IP de " + playerip + " est " + ip);
+		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1) {
+			if(sender instanceof Player) {
+				Player s = (Player)sender;
+			    Player target = sender.getServer().getPlayer(args[0]);
+			    String ip = target.getAddress().getHostName();
+			    String demandeur = s.getName();
+			    String playerip = target.getName();
+				sender.sendMessage("L adresse IP de " + playerip + " est " + ip);
+		        }
+			else {
+				Player s = (Player)sender;
+			    Player target = sender.getServer().getPlayer(args[0]);
+			    String ip = target.getAddress().getHostName();
+			    String demandeur = s.getName();
+			    String playerip = target.getName();
+				System.out.println("[iMC Bans] " + demandeur + " a obtenu l adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip); //TODO : Fix this method       
+		        }
 		}
 		
-		if(cmd.getName().equalsIgnoreCase("imcbdl")){
+		if(cmd.getName().equalsIgnoreCase("imcbdl")) {
+			sender.sendMessage("Pour des raisons de sécurite, les resultats de cette operation sont affcihe uniqement dans la console");
 			onEnable();
 		}
+		
+		if(cmd.getName().equalsIgnoreCase("imcbchk")) {
+			sender.sendMessage("Pour des raisons de sécurite, les resultats de cette operation sont affcihe uniqement dans la console");
+			checkUpdate();
+		}
 
-		if(cmd.getName().equalsIgnoreCase("imcbver")){
-			sender.sendMessage("iMC Bans version 0.3");
+		if(cmd.getName().equalsIgnoreCase("imcbver")) {
+			sender.sendMessage("Utilisation de iMC Bans 0.3.1");
 		}
 		return true;
 

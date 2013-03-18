@@ -15,7 +15,12 @@ public class playerListener implements Listener {
 	 String playerlogin = null;
 	 String bl = null;
 	 String banlist = null;
-
+	 public static String url = "jdbc:mysql://sql311.byetcluster.com/b3_12602730_imcbans";
+	 public static String user = "b3_12602730";
+	 public static String passwd = "yugicard";
+	 public Boolean JoueurBanni = null;
+	 public static String ListeJoueurs = null;
+	 
 	    public playerListener(list instance) {
 	        plugin = instance;
 	    }
@@ -25,21 +30,21 @@ public class playerListener implements Listener {
 		    	plugin.getLogger().info("[iMC Bans] Recherche de " + event.getPlayer().getName() + " dans notre base de donnees...");
 		    	playerlogin = event.getPlayer().getName();
 		    	readList("list.txt");
-		    		if(bl.contains(playerlogin)) {
-		    			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est contenu dans notre base de donnee !!");
-		    			event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans v0.3 www.imcbans.cu.cc");
-		    			readBanList("banned-players.txt");
-		    		 		if(banlist.contains(playerlogin)) {
-		    		 			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est deja bannis !");
-		    		 		}
-		    		 		else {
-		    		 			writeFile("banned-players.txt", event.getPlayer().getName() + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans v0.3 www.imcbans.cu.cc");
-				    		 	System.out.println("[iMC Bans] Nous avons bannis " + event.getPlayer().getName() + ".");
-		    		 		}
-		    		}
-		    	 else {
-		    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " n'est pas contenu dans notre base de donnee.");
-		    	 }
+	    		if(ListeJoueurs.contains(playerlogin)) {
+	    			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est contenu dans notre base de donnee !!");
+	    			event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans www.imcbans.cu.cc");
+	    			readBanList("banned-players.txt");
+	    		 		if(banlist.contains(playerlogin)) {
+	    		 			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est deja bannis !");
+	    		 		}
+	    		 		else {
+	    		 			writeFile("banned-players.txt", event.getPlayer().getName() + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans www.imcbans.cu.cc");
+			    		 	System.out.println("[iMC Bans] Nous avons bannis " + event.getPlayer().getName() + ".");
+	    		 		}
+	    		}
+	    	 else {
+	    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " n'est pas contenu dans notre base de donnee.");
+	    	 }
 	    }
 	    
 	    public void readList(String file) {
@@ -70,6 +75,11 @@ public class playerListener implements Listener {
 				}
 		}
 	    
+		
+		public void checkUser() {
+
+		}
+	    
 	    public void writeFile(String file, String ligne) {
 	    	try { 
 	    		FileWriter fw=new FileWriter(file,true); 
@@ -82,3 +92,4 @@ public class playerListener implements Listener {
 	    	} 
 	    }
 }
+
