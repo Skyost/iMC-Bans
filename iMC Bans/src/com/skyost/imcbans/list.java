@@ -37,16 +37,16 @@ public class list extends JavaPlugin{
 	    }
         autoUpdate = config.autoUpdateList;
 		if(autoUpdate==true) {
-        	PluginManager pm = getServer().getPluginManager();
-        	pm.registerEvents(playerListener, this);
 			System.out.println("[iMC Bans] Telechargement du fichier list.txt...");
 			UrlUtils("http://www.imcbans.cu.cc/list.txt");
 			System.out.println("[iMC Bans] Lecture du fichier list.txt :");
 			readList("list.txt");
 		}
 		else {
-			System.out.println("[iMC Bans] Pas de telechargement du fichier list.txt ;)");
+			System.out.println("[iMC Bans] Pas de telechargement du fichier list.txt :/");
 		}
+    	PluginManager pm = getServer().getPluginManager();
+    	pm.registerEvents(playerListener, this);
 		System.out.println("[iMC Bans] Pret a bannir les griefers ;)");
 		System.out.println("[iMC Bans] Visitez http://www.imcbans.cu.cc/ pour plus d'informations.");
 	}
@@ -144,15 +144,18 @@ public class list extends JavaPlugin{
 		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1){
 			Player s = (Player)sender;
 		    Player target = sender.getServer().getPlayer(args[0]);
-		    String ip = target.getAddress().getHostName();
+		    String ip = target.getAddress().getAddress().getHostAddress();
 		    String demandeur = s.getName();
 		    String playerip = target.getName();
-			System.out.println("[iMC Bans] " + demandeur + " a obtenu l adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip); //TODO : Fixe this method
+			System.out.println("[iMC Bans] " + demandeur + " a obtenu l adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip);
 			sender.sendMessage("L adresse IP de " + playerip + " est " + ip);
 		}
 
 		if(cmd.getName().equalsIgnoreCase("imcbdl")){
-			onEnable();
+			System.out.println("[iMC Bans] Telechargement du fichier list.txt...");
+			UrlUtils("http://www.imcbans.cu.cc/list.txt");
+			System.out.println("[iMC Bans] Lecture du fichier list.txt :");
+			readList("list.txt");
 		}
 
 		if(cmd.getName().equalsIgnoreCase("imcbchk")){
