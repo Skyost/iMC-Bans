@@ -22,23 +22,24 @@ public class playerListener implements Listener {
 
 	    @EventHandler
 	    public void onPlayerJoin(PlayerJoinEvent event) {
-		    	plugin.getLogger().info("[iMC Bans] Recherche de " + event.getPlayer().getName() + " dans notre base de donnees...");
+		    	plugin.getLogger();
 		    	playerlogin = event.getPlayer().getName();
+		    	System.out.println("[iMC Bans] Recherche de " + playerlogin + " dans notre base de données...");
 		    	readList("list.txt");
 		    		if(bl.contains(playerlogin)) {
-		    			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est contenu dans notre base de donnee !!");
+		    			System.out.println("[iMC Bans] " + playerlogin + " est contenu dans notre base de données !!");
 		    			event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans www.imcbans.cu.cc");
 		    			readBanList("banned-players.txt");
 		    		 		if(banlist.contains(playerlogin)) {
-		    		 			System.out.println("[iMC Bans] " + event.getPlayer().getName() + " est deja bannis !");
+		    		 			System.out.println("[iMC Bans] " + playerlogin + " est déjà bannis !");
 		    		 		}
 		    		 		else {
-		    		 			writeFile("banned-players.txt", event.getPlayer().getName() + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans www.imcbans.cu.cc");
-				    		 	System.out.println("[iMC Bans] Nous avons bannis " + event.getPlayer().getName() + ".");
+		    		 			writeFile("banned-players.txt", playerlogin + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans www.imcbans.cu.cc");
+				    		 	System.out.println("[iMC Bans] Nous avons bannis " + playerlogin + ".");
 		    		 		}
 		    		}
 		    	 else {
-		    		 System.out.println("[iMC Bans] " + event.getPlayer().getName() + " n'est pas contenu dans notre base de donnee.");
+		    		 System.out.println("[iMC Bans] " + playerlogin + " n'est pas contenu dans notre base de données.");
 		    	 }
 	    }
 
@@ -78,7 +79,7 @@ public class playerListener implements Listener {
 	    		} 
 	    		catch (IOException ioe) 
 	    		{ 
-	    		System.out.println("Message : "+ioe.getMessage()); 
+	    		System.out.println("[iMC Bans] "+ioe.getMessage()); 
 	    	} 
 	    }
 }

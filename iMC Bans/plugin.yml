@@ -1,7 +1,8 @@
 name: iMC Bans
-version: 0.3.1
+version: 0.4
 main: com.skyost.imcbans.list
 author: Skyost
+website: http://www.imcbans.cu.cc/
 description: UNE liste DES serveurs
 commands:
     imcbdl:
@@ -11,8 +12,8 @@ commands:
         usage: /imcchk
         description: Cherche des mises a jours
     imcbip:
-        usage: '/imcbip [player]'
-        description: Obtient l adresse IP de [player]
+        usage: /imcbip <player>
+        description: Obtient l'adresse IP de <player>
     imcbver:
         usage: /imcbver
         description: Montre la version du plugin
