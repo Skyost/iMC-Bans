@@ -26,6 +26,7 @@ public class list extends JavaPlugin{
 	public String versiontxt = null;
 	public iMCBConfig config;
 	public Boolean autoUpdate = null;
+	public String demandeur = null;
 	private final playerListener playerListener = new playerListener(this);
 
 	public void onEnable() {
@@ -143,25 +144,40 @@ public class list extends JavaPlugin{
 			player = (Player) sender;
 		}
 
-		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1){
-			Player s = (Player) sender;
+		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1) {
+			try {
 		    Player target = Bukkit.getPlayer(args[0]);
 		    String ip = target.getAddress().getHostName(); //TODO: Fix :/
-		    String demandeur = s.getName();
 		    String playerip = target.getName();
 			if (sender instanceof Player) {
 				if(player.hasPermission("imcbans.player.getip")) {
-					sender.sendMessage("[iMC Bans] L'adresse IP de " + playerip +" est " + ip);
-					System.out.println("[iMC Bans] " + demandeur + " à obtenu l'adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip);
+					Player s = (Player) sender;
+				    String demandeur = s.getName();
+				    if (target.equals("")) {
+						sender.sendMessage("[iMC Bans] Veuillez spécifier un nom d'utilisateur !");
+				    }
+				    else {
+						sender.sendMessage("[iMC Bans] L'adresse IP de " + playerip +" est " + ip);
+						System.out.println("[iMC Bans] " + demandeur + " à obtenu l'adresse ip a partir de iMC Bans du joueur : " + playerip + " qui est " + ip);
+				    }
 				}
 				else {
 					sender.sendMessage("[iMC Bans] Vous n'avez pas la permission d'éxecuter cette commande :/");
 				}
 			}
 			else {
-				System.out.println("[iMC Bans] L'adresse IP de " + playerip +" est " + ip);
+					System.out.println("[iMC Bans]  L'adresse IP de " + playerip +" est " + ip);
 			}
 		}
+			catch (NullPointerException e){
+				if(demandeur == null) {
+					System.out.println("[iMC Bans] Nom d'utilisateur non-valide lors de la commande /imcbip !");
+				}
+				else {
+					System.out.println("[iMC Bans] Nom d'utilisateur non-valide lors de la commande /imcbip exéctuée par " + demandeur);
+				}
+		}
+	}
 
 		if(cmd.getName().equalsIgnoreCase("imcbdl")) {
 			if (sender instanceof Player) {
