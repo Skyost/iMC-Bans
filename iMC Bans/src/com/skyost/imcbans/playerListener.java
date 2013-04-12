@@ -8,15 +8,15 @@ import java.util.Scanner;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import com.skyost.imcbans.list;
+import com.skyost.imcbans.main;
 
 public class playerListener implements Listener {
-	 private final list plugin;
+	 private final main plugin;
 	 String playerlogin = null;
 	 String bl = null;
 	 String banlist = null;
 
-	    public playerListener(list instance) {
+	    public playerListener(main instance) {
 	        plugin = instance;
 	    }
 
@@ -24,22 +24,22 @@ public class playerListener implements Listener {
 	    public void onPlayerJoin(PlayerJoinEvent event) {
 		    	plugin.getLogger();
 		    	playerlogin = event.getPlayer().getName();
-		    	System.out.println("[iMC Bans] Recherche de " + playerlogin + " dans notre base de données...");
+		    	System.out.println("[iMC Bans] " + main.s26 + playerlogin + main.s27);
 		    	readList("list.txt");
 		    		if(bl.contains(playerlogin)) {
-		    			System.out.println("[iMC Bans] " + playerlogin + " est contenu dans notre base de données !!");
-		    			event.getPlayer().kickPlayer("Ce serveur utilise iMC Bans www.imcbans.cu.cc");
+		    			System.out.println("[iMC Bans] " + playerlogin + main.s28);
+		    			event.getPlayer().kickPlayer(main.kickbanMessage);
 		    			readBanList("banned-players.txt");
 		    		 		if(banlist.contains(playerlogin)) {
-		    		 			System.out.println("[iMC Bans] " + playerlogin + " est déjà bannis !");
+		    		 			System.out.println("[iMC Bans] " + playerlogin + main.s22);
 		    		 		}
 		    		 		else {
-		    		 			writeFile("banned-players.txt", playerlogin + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|Ce serveur utilise iMC Bans www.imcbans.cu.cc");
-				    		 	System.out.println("[iMC Bans] Nous avons bannis " + playerlogin + ".");
+		    		 			writeFile("banned-players.txt", playerlogin + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|" + main.kickbanMessage);
+				    		 	System.out.println("[iMC Bans] " + main.s23 + playerlogin + ".");
 		    		 		}
 		    		}
 		    	 else {
-		    		 System.out.println("[iMC Bans] " + playerlogin + " n'est pas contenu dans notre base de données.");
+		    		 System.out.println("[iMC Bans] " + playerlogin + main.s29);
 		    	 }
 	    }
 

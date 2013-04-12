@@ -9,5 +9,8 @@ public class iMCBConfig extends Config {
 		CONFIG_FILE = new File(plugin.getDataFolder(), "config.yml");
 		CONFIG_HEADER = "iMC Bans Configuration";
 	}
-	public boolean autoUpdateList = true;
+	public String language = "EN";
+	public boolean autoUpdateListOnStartup = true;
+	public boolean showListOnStartup = true;
+	public boolean checkUpdateOnStartup = false;
 }
