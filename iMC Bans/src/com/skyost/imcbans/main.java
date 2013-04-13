@@ -105,7 +105,7 @@ public class main extends JavaPlugin {
 	
 	public void setLanguage() {
 		String language = config.language;
-		if(language == "EN") {
+		if(language.equals("EN")) {
 			s1 = "Downloading file list.txt...";
 			s2 = "Reading list.txt :";
 			s3 = "Ready to ban griefers ;)";
@@ -138,7 +138,7 @@ public class main extends JavaPlugin {
 			permissionMessage = "You do not have permission to execute this command :/";
 			kickbanMessage = "This server use iMC Bans www.imcbans.cu.cc";
 		}
-		else if(language == "FR") {
+		else if(language.equals("FR")) {
 			s1 = "Téléchargement du fichier list.txt...";
 			s2 = "Lecture du fichier list.txt :";
 			s3 = "Prêt à bannir les griefers ;)";
