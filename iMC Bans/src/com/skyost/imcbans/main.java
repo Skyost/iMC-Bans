@@ -296,7 +296,7 @@ public class main extends JavaPlugin {
 
 		if(cmd.getName().equalsIgnoreCase("imcbip") && args.length == 1) {
 			try {
-		    Player target = Bukkit.getPlayer(args[0]);
+		    Player target = Bukkit.getPlayerExact(args[0]);
 		    String ip = target.getAddress().getHostName(); //TODO: Fix :/
 		    String playerip = target.getName();
 			if (sender instanceof Player) {
