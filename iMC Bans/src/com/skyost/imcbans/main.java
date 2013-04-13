@@ -331,6 +331,7 @@ public class main extends JavaPlugin {
 		
 		if(cmd.getName().equalsIgnoreCase("imcbreason") && args.length == 2) {
 			if (sender instanceof Player) {
+				if(player.hasPermission("imcbans.player.banplayer")) {
 		    Player target = Bukkit.getPlayer(args[0]);
 			try {
 			    banplayer = target.getName();
@@ -353,6 +354,10 @@ public class main extends JavaPlugin {
 		 			sender.sendMessage("[iMC Bans] " + s23 + banplayer + ".");
 		 		}
 		    }
+				}
+				else {
+					sender.sendMessage("[iMC Bans] " + permissionMessage);
+				}
     		}
 		else {
 			Player target = Bukkit.getPlayer(args[0]);
