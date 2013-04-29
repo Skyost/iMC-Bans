@@ -58,6 +58,7 @@ public class main extends JavaPlugin {
 	public static String s27 = null;
 	public static String s28 = null;
 	public static String s29 = null;
+	public static String s30 = null;
 	public static String permissionMessage = null;
 	public static String kickbanMessage = null;
 	private final playerListener playerListener = new playerListener(this);
@@ -115,7 +116,7 @@ public class main extends JavaPlugin {
 			s7 = "Goodbye !";
 			s8 = "Searching for updates...";
 			s9 = "Your installation is completely up to date ;)";
-			s10 = "You have the version 0.5 while the latest version is ";
+			s10 = "You have the version 0.5.1 while the latest version is ";
 			s11 = "Check http://www.imcbans.cu.cc for more information ;)";
 			s12 = "Please specify a player name !";
 			s13 = "The IP adress of ";
@@ -130,11 +131,12 @@ public class main extends JavaPlugin {
 			s22 = " is already banned !";
 			s23 = "We have banned ";
 			s24 = "Success :D";
-			s25 = "Using iMC Bans v0.5";
+			s25 = "Using iMC Bans v0.5.1";
 			s26 = "Searching for ";
 			s27 = " in our database...";
 			s28 = " is contained in our database !!";
 			s29 = " is not included in our database.";
+			s30 = " Two arguments only !";
 			permissionMessage = "You do not have permission to execute this command :/";
 			kickbanMessage = "This server use iMC Bans www.imcbans.cu.cc";
 		}
@@ -148,7 +150,7 @@ public class main extends JavaPlugin {
 			s7 = "À plus tard !";
 			s8 = "Recherche de mises à jours...";
 			s9 = "Votre installation est parfaitement à jour ;)";
-			s10 = "Vous possèdez la version 0.5 tandis que la version la plus récente est ";
+			s10 = "Vous possèdez la version 0.5.1 tandis que la version la plus récente est ";
 			s11 = "Consultez http://www.imcbans.cu.cc pour plus d'informations ;)";
 			s12 = "Veuillez spécifier un nom d'utilisateur !";
 			s13 = "L'adresse IP de ";
@@ -163,11 +165,12 @@ public class main extends JavaPlugin {
 			s22 = " est déjà bannis !";
 			s23 = "Nous avons bannis ";
 			s24 = "Succès :D";
-			s25 = "Utilisation de iMC Bans v0.5";
+			s25 = "Utilisation de iMC Bans v0.5.1";
 			s26 = "Recherche de ";
 			s27 = " dans notre base de données...";
 			s28 = " est contenu dans notre base de données !!";
 			s29 = " n'est pas contenu dans notre base de données.";
+			s30 = "Uniquement deux arguments !";
 			permissionMessage = "Vous n'avez pas la permission d'éxecuter cette commande :/";
 			kickbanMessage = "Ce serveur utilise iMC Bans www.imcbans.cu.cc";
 		}
@@ -247,7 +250,7 @@ public class main extends JavaPlugin {
 		System.out.println("[iMC Bans Update] " + s8);
 		UrlUtils("http://www.imcbans.cu.cc/version.txt");
 		readVersion("version.txt");
-		if(versiontxt.equals("iMC Bans 0.5")) {
+		if(versiontxt.equals("iMC Bans 0.5.1")) {
 			System.out.println("[iMC Bans Update] " + s9);
 			deleteFile("version.txt");
 		}
@@ -329,7 +332,8 @@ public class main extends JavaPlugin {
 		}
 	}
 		
-		if(cmd.getName().equalsIgnoreCase("imcbreason") && args.length == 2) {
+		if(cmd.getName().equalsIgnoreCase("imcbreason")) {
+			if(args.length == 2) {
 			if (sender instanceof Player) {
 				if(player.hasPermission("imcbans.player.banplayer")) {
 		    Player target = Bukkit.getPlayer(args[0]);
@@ -350,7 +354,7 @@ public class main extends JavaPlugin {
 		 		}
 		 		else {
 	    			target.kickPlayer(reason);
-		 			writeFile("banned-players.txt", banplayer + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|" + reason);
+	    			target.setBanned(true);
 		 			sender.sendMessage("[iMC Bans] " + s23 + banplayer + ".");
 		 		}
 		    }
@@ -378,11 +382,15 @@ public class main extends JavaPlugin {
 		 		}
 		 		else {
 	    			target.kickPlayer(reason);
-		 			writeFile("banned-players.txt", banplayer + "|2012-12-21 00:00:00 +0100|(Unknown)|Forever|" + reason);
+	    			target.setBanned(true);
 		 			System.out.println("[iMC Bans] " + s23 + banplayer + ".");
 		 		}
 		    }
 		}
+		}
+		}
+		else {
+	    	System.out.println("[iMC Bans] " + s30);
 		}
 
 		if(cmd.getName().equalsIgnoreCase("imcbdl")) {
@@ -411,7 +419,7 @@ public class main extends JavaPlugin {
 					sender.sendMessage("[iMC Bans Update] " + s8);
 					UrlUtils("http://www.imcbans.cu.cc/version.txt");
 					readVersion("version.txt");
-						if(versiontxt.equals("iMC Bans 0.5")) {
+						if(versiontxt.equals("iMC Bans 0.5.1")) {
 							sender.sendMessage("[iMC Bans Update] " + s9);
 							deleteFile("version.txt");
 						}
