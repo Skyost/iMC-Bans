@@ -1,8 +1,8 @@
 name: iMC Bans
-version: 0.5.2
+version: 0.5.3
 main: com.skyost.imcbans.main
 author: Skyost
-website: http://www.imcbans.cu.cc/
+website: http://www.imc-bans.eu/
 description: UNE liste DES serveurs
 commands:
     imcbdl:
@@ -18,6 +18,10 @@ commands:
     imcbreason:
         usage: /imcbreason <player>
         description: Ban de <player> avec <reason>
+        
+    imcbupdt:
+        usage: /imcbupdt
+        description: Met a jour le plugin
         
     imcbver:
         usage: /imcbver

@@ -59,6 +59,14 @@ public class main extends JavaPlugin {
 	public static String s28 = null;
 	public static String s29 = null;
 	public static String s30 = null;
+	public static String s31 = null;
+	public static String s32 = null;
+	public static String s33 = null;
+	public static String s34 = null;
+	public static String s35 = null;
+	public static String s36 = null;
+	public static String s37 = null;
+	public static String s38 = null;
 	public static String permissionMessage = null;
 	public static String kickbanMessage = null;
 	private final playerListener playerListener = new playerListener(this);
@@ -77,7 +85,7 @@ public class main extends JavaPlugin {
 	    Boolean autoUpdate = config.autoUpdateListOnStartup;
 		if(autoUpdate==true) {
 			System.out.println("[iMC Bans] " + s1);
-			UrlUtils("http://www.imcbans.cu.cc/list.txt");
+			UrlUtils("http://www.imc-bans.eu/list.txt");
 			Boolean showList = config.showListOnStartup;
 			if(showList == true) {
 			System.out.println("[iMC Bans] " + s2);
@@ -110,14 +118,14 @@ public class main extends JavaPlugin {
 			s1 = "Downloading file list.txt...";
 			s2 = "Reading list.txt :";
 			s3 = "Ready to ban griefers ;)";
-			s4 = "Visit http://www.imcbans.cu.cc/ for more information.";
+			s4 = "Visit http://www.imc-bans.eu/ for more information.";
 			s5 = "Error when sending statistics : ";
 			s6 = "Bad URL, website probably down?";
 			s7 = "Goodbye !";
 			s8 = "Searching for updates...";
 			s9 = "Your installation is completely up to date ;)";
-			s10 = "You have the version 0.5.2 while the latest version is ";
-			s11 = "Check http://www.imcbans.cu.cc for more information ;)";
+			s10 = "You have the version 0.5.3 while the latest version is ";
+			s11 = "Check http://www.imc-bans.eu for more information ;)";
 			s12 = "Please specify a player name !";
 			s13 = "The IP adress of ";
 			s14 = " is ";
@@ -131,27 +139,35 @@ public class main extends JavaPlugin {
 			s22 = " is already banned !";
 			s23 = "We have banned ";
 			s24 = "Success :D";
-			s25 = "Using iMC Bans v0.5.2";
+			s25 = "Using iMC Bans v0.5.3";
 			s26 = "Searching for ";
 			s27 = " in our database...";
 			s28 = " is contained in our database !!";
 			s29 = " is not included in our database.";
 			s30 = " Two arguments only !";
+			s31 = "Please use this command from the console only !";
+			s32 = "Update found: The updater found an update, and has readied it to be loaded the next time the server restarts/reloads.";
+			s33 = "No Update: The updater did not find an update, and nothing was downloaded. Check your version with /imcbver and if it's up to date with /imcbchk.";
+			s34 = "Download Failed: The updater found an update, but was unable to download it.";
+			s35 = "dev.bukkit.org Failed: For some reason, the updater was unable to contact DBO to download the file.";
+			s36 = "No version found: When running the version check, the file on DBO did not contain the a version in the format 'vVersion' such as 'v1.0'.";
+			s37 = "Bad slug: The slug provided by the plugin running the updater was invalid and doesn't exist on DBO.";
+			s38 = "Update found: There was an update found but not be downloaded !";
 			permissionMessage = "You do not have permission to execute this command :/";
-			kickbanMessage = "This server use iMC Bans www.imcbans.cu.cc";
+			kickbanMessage = "This server use iMC Bans www.imc-bans.eu";
 		}
 		else if(language.equals("FR")) {
 			s1 = "Téléchargement du fichier list.txt...";
 			s2 = "Lecture du fichier list.txt :";
 			s3 = "Prêt à bannir les griefers ;)";
-			s4 = "Visitez http://www.imcbans.cu.cc/ pour plus d'informations.";
+			s4 = "Visitez http://www.imc-bans.eu/ pour plus d'informations.";
 			s5 = "Erreur lors de l'envoi des statistiques : ";
 			s6 = "Mauvaise URL, site peut-être down ?";
 			s7 = "À plus tard !";
 			s8 = "Recherche de mises à jours...";
 			s9 = "Votre installation est parfaitement à jour ;)";
-			s10 = "Vous possèdez la version 0.5.2 tandis que la version la plus récente est ";
-			s11 = "Consultez http://www.imcbans.cu.cc pour plus d'informations ;)";
+			s10 = "Vous possèdez la version 0.5.3 tandis que la version la plus récente est ";
+			s11 = "Consultez http://www.imc-bans.eu pour plus d'informations ;)";
 			s12 = "Veuillez spécifier un nom d'utilisateur !";
 			s13 = "L'adresse IP de ";
 			s14 = " est ";
@@ -165,14 +181,22 @@ public class main extends JavaPlugin {
 			s22 = " est déjà bannis !";
 			s23 = "Nous avons bannis ";
 			s24 = "Succès :D";
-			s25 = "Utilisation de iMC Bans v0.5.2";
+			s25 = "Utilisation de iMC Bans v0.5.3";
 			s26 = "Recherche de ";
 			s27 = " dans notre base de données...";
 			s28 = " est contenu dans notre base de données !!";
 			s29 = " n'est pas contenu dans notre base de données.";
 			s30 = "Uniquement deux arguments !";
+			s31 = "Veuillez utiliser cette commande depuis la console !";
+			s32 = "Mise à jour trouvée: L'updater a trouvé une mise à jour et elle sera active à votre prochain restart/reload ;)";
+			s33 = "Pas de mise à jour: L'updater n'a trouvé aucune mise à jour. Verifiez votre version avec /imcbver et si il existe une mise à jour avec /imcbchk.";
+			s34 = "Echec du téléchargement: L'updater a trouvé une mise à jour mais impossible de la télécharger.";
+			s35 = "dev.bukkit.org Echec: Impossible de se connecter sur DBO.";
+			s36 = "Echec de la vérification: L'updater n'a pas trouvé de version avec pour modèle 'vVersion' exemple : 'v1.0'.";
+			s37 = "Mauvais slug: Le slug donné par le plugin n'est pas valide et n'a pas était trouvé sur DBO.";
+			s38 = "Mise à jour trouvée: Une mise à jour a était trouvée mais n'a pas était téléchargée.";
 			permissionMessage = "Vous n'avez pas la permission d'éxecuter cette commande :/";
-			kickbanMessage = "Ce serveur utilise iMC Bans www.imcbans.cu.cc";
+			kickbanMessage = "Ce serveur utilise iMC Bans www.imc-bans.eu";
 		}
 		else {
 			System.out.println("[iMC Bans] ERROR WITH THE LANGUAGE CODE");
@@ -248,9 +272,9 @@ public class main extends JavaPlugin {
 
 	public void checkUpdate() {
 		System.out.println("[iMC Bans Update] " + s8);
-		UrlUtils("http://www.imcbans.cu.cc/version.txt");
+		UrlUtils("http://www.imc-bans.eu/version.txt");
 		readVersion("version.txt");
-		if(versiontxt.equals("iMC Bans 0.5.2")) {
+		if(versiontxt.equals("iMC Bans 0.5.3")) {
 			System.out.println("[iMC Bans Update] " + s9);
 			deleteFile("version.txt");
 		}
@@ -283,7 +307,7 @@ public class main extends JavaPlugin {
     		} 
     		catch (IOException ioe) 
     		{ 
-    		System.out.println("[iMC Bans] "+ioe.getMessage()); 
+    		System.out.println("[iMC Bans] " + ioe.getMessage()); 
     	} 
     }
     
@@ -387,17 +411,18 @@ public class main extends JavaPlugin {
 		 		}
 		    }
 		}
-		}
+			
 		}
 		else {
 	    	System.out.println("[iMC Bans] " + s30);
 		}
-
+		}
+		
 		if(cmd.getName().equalsIgnoreCase("imcbdl")) {
 			if (sender instanceof Player) {
 				if(player.hasPermission("imcbans.player.dllist")) {
 					sender.sendMessage("[iMC Bans] " + s1);
-					UrlUtils("http://www.imcbans.cu.cc/list.txt");
+					UrlUtils("http://www.imc-bans.eu/list.txt");
 					sender.sendMessage("[iMC Bans] " + s24);
 				}
 				else {
@@ -406,10 +431,47 @@ public class main extends JavaPlugin {
 			}
 			else { 
 				System.out.println("[iMC Bans] " + s1);
-				UrlUtils("http://www.imcbans.cu.cc/list.txt");
+				UrlUtils("http://www.imc-bans.eu/list.txt");
 				System.out.println("[iMC Bans] " + s2);
 				readList("list.txt");
 				System.out.println("[iMC Bans] " + s24);
+			}
+		}
+		
+		if(cmd.getName().equalsIgnoreCase("imcbupdt")) {
+			if (sender instanceof Player) {
+				sender.sendMessage("[iMC Bans] " + s31);
+			}
+			else { 
+				try {
+					Updater updater = new Updater(this, "imc-bans", this.getFile(), Updater.UpdateType.DEFAULT, false);
+					Updater.UpdateResult result = updater.getResult();
+			        switch(result)
+			        {
+			            case SUCCESS:
+							System.out.println("[iMC Bans] " + s32);
+			                break;
+			            case NO_UPDATE:
+			            	System.out.println("[iMC Bans] " + s33);
+			                break;
+			            case FAIL_DOWNLOAD:
+			            	System.out.println("[iMC Bans] " + s34);
+			                break;
+			            case FAIL_DBO:
+			            	System.out.println("[iMC Bans] " + s35);
+			                break;
+			            case FAIL_NOVERSION:
+			            	System.out.println("[iMC Bans] " + s36);
+			                break;
+			            case FAIL_BADSLUG:
+			            	System.out.println("[iMC Bans] " + s37);
+			                break;
+			            case UPDATE_AVAILABLE:
+			            	System.out.println("[iMC Bans] " + s38);
+			        }
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
@@ -417,9 +479,9 @@ public class main extends JavaPlugin {
 			if (sender instanceof Player) {
 				if(player.hasPermission("imcbans.player.checkforupdate")) {
 					sender.sendMessage("[iMC Bans Update] " + s8);
-					UrlUtils("http://www.imcbans.cu.cc/version.txt");
+					UrlUtils("http://www.imc-bans.eu/version.txt");
 					readVersion("version.txt");
-						if(versiontxt.equals("iMC Bans 0.5.2")) {
+						if(versiontxt.equals("iMC Bans 0.5.3")) {
 							sender.sendMessage("[iMC Bans Update] " + s9);
 							deleteFile("version.txt");
 						}
