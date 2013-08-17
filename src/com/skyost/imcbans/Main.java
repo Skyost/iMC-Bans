@@ -88,8 +88,6 @@ public class Main extends JavaPlugin implements Listener {
 	    	System.out.println("[iMC Bans] " + message);
 	    }
 	}
-    
-    
 	
 	public void startMetricsLite() {
 		try {
